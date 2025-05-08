@@ -1,0 +1,642 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome</title>
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<style>
+  
+@import url('https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&family=Anton+SC&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Metamorphous&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Mono&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&display=swap');
+
+body{
+
+overflow-x: hidden;
+font-family:  "Hanken Grotesk", sans-serif;
+padding-left: 20px; 
+}
+body::-webkit-scrollbar {
+display: none; /* Hides the scrollbar */
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    
+}
+.logo{
+  display: flex;
+}
+.navbar{
+    display: flex;
+    
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+    padding: 10px 0 0 20px;
+}
+.navbar a{
+    color: #666666;
+    text-decoration: none;
+    padding: 20px;
+}
+.nav a.active , a:hover{
+    color: #2A05AA;
+}
+hr{
+    color: #666666;
+    margin-left: 20px;
+}
+.btn{
+    
+    padding: 20px;
+}
+.btn button{
+    width: 175px;
+    height: 35px;
+    border-radius: 24px;
+    margin-right: 10px;
+    color: #ffffff;
+    border: none;
+}
+.ambulance{
+    background-color: #DE2A1C;
+}
+.Appointment{
+    background-color: #048DDD;
+}
+.appointment-popup {
+    background-color: #fff;
+    margin: auto;
+    bottom: 60px;
+    padding: 20px;
+    border-radius: 16px;
+    width: 537px;
+    align-items: center;
+    margin: auto;
+  
+    position: relative;
+  }
+  .appointment-popup h2{
+      text-align: center;
+  }
+.popup {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.popup-content {
+  background-color: #fff;
+  margin: auto;
+  bottom: 60px;
+  padding: 20px;
+  border-radius: 16px;
+  width: 537px;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 44px;
+  cursor: pointer;
+}
+
+.call-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 180px;
+  background-color: #DE2A1C;
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.call-button:hover {
+  background-color: darkred;
+  color: #fff;
+}
+/* Close button */
+.close-contact {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+/* Hospital Info */
+.hospital-info {
+  text-align: center;
+}
+
+.popup-content h2{
+  padding: 0px;
+  margin: 0px;
+}
+.close-appointment {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+#appointmentForm{
+  padding: 20px;
+}
+#appointmentForm label{
+  text-align: left;
+}
+/* Form inputs */
+#appointmentForm input,
+#appointmentForm textarea {
+  width: 462px;
+  height: 45px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+
+  width: 490px;
+  height: 45px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submit-button:hover {
+  background-color: #0056b3;
+}
+.app{
+  display: flex;
+  justify-content: space-between;
+  width: 395px;
+  height: 56px;
+  margin-bottom:40px ;
+}
+.date  , .shift{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+  
+}
+#appointmentForm #date{
+  width: 177px;
+  height: 29px;
+  
+}
+.shift{
+  margin-left: 105px;
+}
+.shift select{
+  
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 177px;
+  height: inherit;
+  
+}
+.app input , .app option{
+  background-color: D9D9D9;
+  color: #000000;
+}
+/******Home Page******************/
+main{
+   padding-top: 10px;
+    align-items: center;
+}
+
+/********************************************************/
+.contact-section {
+  padding: 40px 20px;
+  background-color: #CFCFCF;
+  text-align: center;
+}
+.contact-section img{
+  border-radius: 30%;
+}
+
+.foot ul{
+  display: flex;
+  list-style: none;
+  margin-left: 20%;
+  
+}
+.contact-info a{
+  color: #666666;
+  text-decoration: none;
+  padding: 10px;
+}
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+.contact-info {
+  flex: 1 1 300px;
+  font-size: 16px;
+  text-align: center;
+  color: #333;
+  line-height: 1.8;
+}
+.contact-info a:hover {
+  text-decoration: underline;
+}
+/************************ABOUT US****************************/
+
+section{
+  display: flex;
+  justify-content: space-around;
+  padding: 20px;
+}
+.image img{
+  border-radius: 8px;
+  margin: 10px;
+}
+.content{
+  width: 665px;
+  height: 470px;
+}
+section h3{
+  font-size: 25px;
+}
+section p{
+  color: #666666;
+  font-size: 20px;
+}
+.ambulance-trigger-btn {
+  padding: 10px 20px;
+  background-color: #DE2A1C;
+  color: white;
+  border-radius: 10px;
+  border: none;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.ambulance-popup-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0,0,0,0.3);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.ambulance-popup-box {
+  background: #fff;
+  border-radius: 15px;
+  padding: 20px;
+  width: 300px;
+  box-shadow: 0px 6px 20px rgba(0,0,0,0.2);
+  text-align: center;
+}
+
+.ambulance-popup-box h4 {
+  margin-top: 0;
+  font-size: 18px;
+}
+
+.ambulance-popup-info {
+  display: flex;
+  justify-content: space-between;
+  margin: 15px 0;
+}
+
+.ambulance-popup-info div {
+  text-align: center;
+}
+
+.popup-close-btn {
+  background: #007bff;
+  color: white;
+  border: none;
+  padding: 6px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+</style>
+<body>
+    <header>
+        <div class="navbar">
+            <div class="logo">
+                <img src="{% static 'imgs/logo.jpeg'%}" alt="logo" width="100px">
+            </div>
+            <div class="nav">
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <li><a href="/login">Patient’s Corner</a></li>
+                    <li><a href="/library">Health Library</a></li>
+                    <li><a href="#" id="openContactPopup">Contact Us</a></li>
+                    <li><a href="/about" class="active">About Us</a></li>
+                </ul>
+                <hr>
+            </div>   
+        </div>
+        <div class="btn">
+          <button class="ambulance-trigger-btn" onclick="handleAmbulanceClick()">Call an  Ambulance</button>
+            <button class="Appointment" id="openAppointmentPopup">Book an Appointment</button>
+        </div>
+        <div class="ambulance-popup-overlay" id="ambulancePopup">
+          <div class="ambulance-popup-box">
+            <h4>Ambulance </h4>
+            <div class="ambulance-popup-info">
+              <div>
+                <p><strong>Phone No : </strong>+91 9856758222</p> 
+              </div>
+            </div>
+            <button class="popup-close-btn" onclick="closePopup()">Close</button>
+          </div>
+        </div>
+          <!--CONTACT US-->
+<!-- The Contact Popup Modal -->
+        <div id="contactPopup" class="popup">
+            <div class="popup-content">
+              <span class="close-contact">&times;</span>
+                <!-- Hospital Info -->
+                <div class="hospital-info">
+                    <img src="{% static 'imgs/logo.jpeg'%}" alt="Hospital Logo" class="hospital-logo" style="width: 100px; margin: 0px; padding: 0px; object-fit: contain;">
+                    <p ><i class="fas fa-phone" style="font-size: 28px; margin: 0px;"></i> +91-7518351847 <br> +91-9889065072</p>
+                    <p><i class="fas fa-envelope" style="font-size: 28px; margin: 0px;"></i> drsahuhospital@gmail.com</p>
+                </div>
+    <!-- Hospital Map -->
+                <div id="map" style="width: 406px; margin-left: 13%; margin-top: 10px; border-radius:10px; overflow:hidden;">
+                <iframe 
+                  width="100%" 
+                  height="250" 
+                  style="border:0"
+                  loading="lazy"
+                  allowfullscreen
+                  referrerpolicy="no-referrer-when-downgrade"
+                  src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1612.0673356536329!2d81.00230181575999!3d26.903212048871627!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x399959002697b1a5%3A0x850a3f1c0125a65c!2sDr.Sahu%20Hospital!5e0!3m2!1sen!2sin!4v1746694542500!5m2!1sen!2sin" >     </iframe>
+               
+            </div>
+          </div>
+        </div>
+<!--Appointment Popup-->
+<div id="appointmentPopup" class="popup">
+  <div class="appointment-popup">
+    <span class="close-appointment">&times;</span>
+    <h2>Book an Appointment</h2>
+
+    <form id="appointmentForm">
+      <label for="patientName">Name</label>
+      <input type="text" id="patientName" required>
+      <label for="patientPhone">Contact No.</label>
+      <input type="tel" id="patientPhone" required>
+      <label for="patientMessage">Description of Symptoms</label>
+      <textarea id="patientMessage" required></textarea>
+      <div class="app">
+        <div class="date">
+          <label for="date">Date</label>
+          <input type="date" name="date" id="date">
+        </div>
+        <div class="shift">
+          <label for="shift">Shift</label>
+          <select name="shift" id="shift">
+            <option value="ss">Select the shift</option>
+            <option value="first">9am-12pm</option>
+            <option value="second">1am-3pm</option>
+            <option value="third">4am-6pm</option>
+          </select>
+        </div>
+      </div>
+     
+      
+      <button type="submit" class="submit-button">Continue</button>
+    </form>
+  </div>
+</div>
+    </header>
+    <section>
+        <div class="content">
+            <h3>Our Vision</h3>
+            <p>To be a recognized leader in healthcare excellence, dedicated to providing compassionate, innovative, and accessible care that transforms the lives of every patient. We will advance medical knowledge through education, foster a culture of continuous improvement, and actively engage with our community to promote health and well-being for all.</p>
+            <br><br>
+            <h3>Our Mission</h3>
+            <p>To provide compassionate, high-quality healthcare that enhances the well-being of our community through innovative treatments, patient education, and a commitment to safety.</p>
+        </div>
+        <div class="image">
+            <img src="{% static 'imgs/img21.jpeg'%}" alt="grpphoto" width="665px" height="458px">
+        </div>
+        
+    </section>
+    <div class="contact-section">
+      <img src="{% static 'imgs/logo.png'%}" alt="" width="90px">
+      <div class="contact-content">
+       
+        <div class="contact-info">
+          <div class="foot">
+            <ul>
+              <li><a href="/login">Patient’s Corner</a></li>
+              <li><a href="/library">Health Library</a></li>
+              <li><a href="#" id="openContactPopup">Contact Us</a></li>
+              <li><a href="/about">About Us</a></li>
+          </ul>
+          </div>
+          <p><strong>Registration No:</strong>XXXXXXXXXXX</p>
+          <p><strong>Address:</strong>
+            Manas Square, Opp - Sai Tower,
+            Sugamau, Indira Nagar,<br>
+            Lucknow, Uttar Pradesh, India
+          </p>
+          <p><strong>Phone:</strong>
+            <a href="tel:+917518351847" >+91-7518351847</a><br>
+            <a href="tel:+919889065072" style="margin-left: 5%;">+91-9889065072</a>
+          </p>
+          
+        </div>
+      </div>
+    </div>
+    <script>
+       function isMobileDevice() {
+    return /Mobi|Android|iPhone|iPad|iPod/i.test(navigator.userAgent);
+}
+
+function handleAmbulanceClick() {
+    const phoneNumber = '+91-0000000000';
+    if (isMobileDevice()) {
+        window.location.href = 'tel:' + phoneNumber;
+    } else {
+        document.getElementById('ambulancePopup').style.display = 'flex';
+    }
+}
+         // Open ambulance popup
+document.getElementById("openPopup").onclick = function() {
+  document.getElementById("ambulancePopup").style.display = "block";
+  getLocation();
+};
+
+// Close ambulance popup
+document.querySelector(".close").onclick = function() {
+  document.getElementById("ambulancePopup").style.display = "none";
+};
+
+// Close popup when clicking outside
+window.onclick = function(event) {
+  if (event.target == document.getElementById("ambulancePopup")) {
+    document.getElementById("ambulancePopup").style.display = "none";
+  }
+};
+
+// Get user's location
+function getLocation() {
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(showPosition, showError, {timeout: 10000});
+  } else {
+    showBlankMap();
+    document.getElementById("locationText").innerHTML = "Geolocation not supported by browser.";
+  }
+}
+
+function showPosition(position) {
+  const lat = position.coords.latitude;
+  const lon = position.coords.longitude;
+  document.getElementById("locationText").innerHTML = `Your Location: (${lat.toFixed(4)}, ${lon.toFixed(4)})`;
+
+  // Show user's location on map
+  const mapIframe = `<iframe 
+    width="100%" 
+    height="300" 
+    style="border:0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps?q=${lat},${lon}&hl=es;z=14&output=embed">
+    </iframe>`;
+
+  document.getElementById("map").innerHTML = mapIframe;
+}
+
+function showError(error) {
+  document.getElementById("locationText").innerHTML = "Location not available.";
+  showBlankMap();
+}
+
+// Show blank map
+function showBlankMap() {
+  const blankIframe = `<iframe 
+    width="100%" 
+    height="300" 
+    style="border:0"
+    loading="lazy"
+    allowfullscreen
+    referrerpolicy="no-referrer-when-downgrade"
+    src="https://www.google.com/maps?q=0,0&hl=es;z=1&output=embed">
+    </iframe>`;
+
+  document.getElementById("map").innerHTML = blankIframe;
+}
+// Open Contact Popup
+document.getElementById("openContactPopup").onclick = function() {
+  document.getElementById("contactPopup").style.display = "block";
+};
+
+// Close Contact Popup
+document.querySelector(".close-contact").onclick = function() {
+  document.getElementById("contactPopup").style.display = "none";
+};
+
+// Close when clicking outside
+window.onclick = function(event) {
+  if (event.target == document.getElementById("contactPopup")) {
+    document.getElementById("contactPopup").style.display = "none";
+  }
+};
+//appointment js
+// Open Popup
+document.getElementById("openAppointmentPopup").onclick = function () {
+  document.getElementById("appointmentPopup").style.display = "block";
+};
+
+// Close Popup
+document.querySelector(".close-appointment").onclick = function () {
+  document.getElementById("appointmentPopup").style.display = "none";
+};
+
+// Close when clicking outside
+window.onclick = function (event) {
+  if (event.target == document.getElementById("appointmentPopup")) {
+    document.getElementById("appointmentPopup").style.display = "none";
+  }
+};
+
+// Form Submission
+document.getElementById("appointmentForm").addEventListener("submit", async function (e) {
+    e.preventDefault();
+
+    const data = {
+        name: document.getElementById("patientName").value,
+        phone: document.getElementById("patientPhone").value,
+        message: document.getElementById("patientMessage").value,
+        date: document.getElementById("date").value,
+        shift: document.getElementById("shift").value
+    };
+
+    try {
+        const response = await fetch("/api/book-appointment/", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+                "X-CSRFToken": getCookie("csrftoken"),
+            },
+            body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+        if (result.success) {
+            // Hide the form popup
+            document.getElementById("appointmentPopup").style.display = "none";
+            // Show confirmation popup
+            alert(`Appointment confirmed for ${result.name} on ${result.date}\nYour token is:\n${result.token}`);
+            this.reset();
+        } else {
+            alert("Failed to book appointment.");
+        }
+    } catch (err) {
+        alert("An error occurred.");
+        console.error(err);
+    }
+});
+
+// Helper to get CSRF token from cookie
+function getCookie(name) {
+    const value = `; ${document.cookie}`;
+    const parts = value.split(`; ${name}=`);
+    if (parts.length === 2) return parts.pop().split(';').shift();
+}
+    </script>
+
+</body>
+</html>

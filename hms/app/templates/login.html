@@ -1,0 +1,128 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&family=Anton+SC&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Metamorphous&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Mono&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&display=swap');
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+        /****************Sign in ******************************/
+        body{
+
+overflow: hidden;
+font-family:  "Hanken Grotesk", sans-serif;
+padding-left: 20px; 
+}
+body::-webkit-scrollbar {
+display: none; /* Hides the scrollbar */
+}
+.bodies{
+   width: 100%;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+    background-image:linear-gradient(0deg, #fcfcfcd5),url(imgs/logo.jpeg);
+    background-repeat: no-repeat;
+    background-position: top;
+    background-size:auto;
+    
+}
+.login{
+    width: 450px;
+    height: 350px;
+    background-color: #ffffff;
+    color: #666666;
+    box-shadow: 0 0px 15px 3px rgba(0,0,0,25%), 0 0px 15px 3px rgba(0,0,0,25%);
+    border-radius: 16px;
+    padding: 30px;
+}
+.login h2 , p{
+  padding: 0px;
+  margin: 5px;
+}
+.login h2{
+  color: #000000;
+}
+/*****************login form ******************/
+form{
+    display: flex;
+    flex-direction: column;
+}
+input{
+    width: 500px;
+    height: 78px;
+    border-radius: 8px;
+    border:1px solid #666666;
+}
+.login button{
+    margin-top: 20px;
+    width: 506px;
+    height: 48px;
+    background-color: #048DDD;
+    border: none;
+    color: #ffffff;
+    border-radius: 8px;
+}
+.login a{
+  color: #ffffff;
+  text-decoration: none;
+}
+/***************************************************/
+        input {
+            width: 442px;
+            height: 45px;
+            border-radius: 8px;
+            border: 1px solid #666666;
+        }
+        label {
+            padding: 10px;
+        }
+        .login button {
+            margin-top: 40px;
+            width: 450px;
+            height: 48px;
+            background-color: #048DDD;
+            border: none;
+            color: #ffffff;
+            border-radius: 8px;
+            cursor: pointer;
+        }
+        .login {
+            padding: 50px;
+        }
+    </style>
+</head>
+<body class="bodies" style="background-image:linear-gradient(0deg, rgb(252, 252, 252, .95)), url('{% static 'imgs/logo.jpeg' %}');">
+
+    {% if messages %}
+        <script>
+            {% for message in messages %}
+                alert("{{ message|escapejs }}");
+            {% endfor %}
+        </script>
+    {% endif %}
+
+    <div class="login">
+        <h2>Sign In</h2>
+        <p>Enter your account details</p>
+        <form action="{% url 'login' %}" method="post">
+            {% csrf_token %}
+            <label for="username">Username</label>
+            <input type="text" name="username" required>
+
+            <label for="password">Password</label>
+            <input type="password" name="password" required>
+
+            <button type="submit">Sign In</button>
+        </form>
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,254 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Amiko:wght@400;600;700&family=Anton+SC&family=Hanken+Grotesk:ital,wght@0,100..900;1,100..900&family=Metamorphous&family=Open+Sans:ital,wght@0,300..800;1,300..800&family=PT+Mono&family=Playfair:ital,opsz,wght@0,5..1200,300..900;1,5..1200,300..900&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Prompt:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Protest+Revolution&display=swap');
+
+body{
+    padding: 10px;
+    overflow-x: hidden;
+    font-family:  "Hanken Grotesk", sans-serif; 
+}
+header{
+    display: flex;
+    justify-content: space-between;
+    cursor: pointer;
+    
+}
+.logo{
+  display: flex;
+}
+.navbar{
+    display: flex;
+    
+}
+.navbar ul{
+    display: flex;
+    list-style: none;
+    padding: 10px 0 0 20px;
+}
+.navbar a{
+    color: #666666;
+    text-decoration: none;
+    padding: 20px;
+}
+.nav a.active , a:hover{
+    color: #2A05AA;
+}
+hr{
+    color: #666666;
+    margin-left: 20px;
+}
+.btn{
+    
+    padding: 20px;
+}
+.btn button{
+    width: 175px;
+    height: 35px;
+    border-radius: 24px;
+    margin-right: 10px;
+    color: #ffffff;
+    border: none;
+}
+.ambulance{
+    background-color: #DE2A1C;
+}
+.Appointment{
+    background-color: #048DDD;
+}
+.appointment-popup {
+    background-color: #fff;
+    margin: auto;
+    bottom: 60px;
+    padding: 20px;
+    border-radius: 16px;
+    width: 537px;
+    align-items: center;
+    margin: auto;
+  
+    position: relative;
+  }
+  .appointment-popup h2{
+      text-align: center;
+  }
+.popup {
+  display: none; 
+  position: fixed;
+  z-index: 1000;
+  padding-top: 100px;
+  left: 0;
+  top: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.7);
+}
+
+.popup-content {
+  background-color: #fff;
+  margin: auto;
+  bottom: 60px;
+  padding: 20px;
+  border-radius: 16px;
+  width: 537px;
+  align-items: center;
+  margin: auto;
+  text-align: center;
+  position: relative;
+}
+
+.close {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 44px;
+  cursor: pointer;
+}
+
+.call-button {
+  display: inline-block;
+  margin-top: 20px;
+  padding: 10px 20px;
+  width: 180px;
+  background-color: #DE2A1C;
+  color: #fff;
+  font-size: 15px;
+  text-decoration: none;
+  border-radius: 5px;
+}
+.call-button:hover {
+  background-color: darkred;
+  color: #fff;
+}
+/* Close button */
+.close-contact {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+/* Hospital Info */
+.hospital-info {
+  text-align: center;
+}
+
+.popup-content h2{
+  padding: 0px;
+  margin: 0px;
+}
+.close-appointment {
+  position: absolute;
+  top: 10px;
+  right: 15px;
+  font-size: 24px;
+  cursor: pointer;
+}
+#appointmentForm{
+  padding: 20px;
+}
+#appointmentForm label{
+  text-align: left;
+}
+/* Form inputs */
+#appointmentForm input,
+#appointmentForm textarea {
+  width: 462px;
+  height: 45px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+}
+
+/* Submit Button */
+.submit-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+
+  width: 490px;
+  height: 45px;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.submit-button:hover {
+  background-color: #0056b3;
+}
+.app{
+  display: flex;
+  justify-content: space-between;
+  width: 395px;
+  height: 56px;
+  margin-bottom:40px ;
+}
+.date  , .shift{
+  display: flex;
+  flex-direction: column;
+  margin: 0px;
+  padding: 0px;
+  
+}
+#appointmentForm #date{
+  width: 177px;
+  height: 29px;
+  
+}
+.shift{
+  margin-left: 105px;
+}
+.shift select{
+  
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  width: 177px;
+  height: inherit;
+  
+}
+.app input , .app option{
+  background-color: D9D9D9;
+  color: #000000;
+}
+
+.contact-section {
+  padding: 40px 20px;
+  background-color: #CFCFCF;
+  text-align: center;
+}
+.contact-section img{
+  border-radius: 30%;
+}
+
+.foot ul{
+  display: flex;
+  list-style: none;
+  margin-left: 20%;
+  
+}
+.contact-info a{
+  color: #666666;
+  text-decoration: none;
+  padding: 10px;
+}
+.contact-content {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 40px;
+  align-items: flex-start;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.contact-info {
+  flex: 1 1 300px;
+  font-size: 16px;
+  text-align: center;
+  color: #333;
+  line-height: 1.8;
+}
+
+
+
+.contact-info a:hover {
+  text-decoration: underline;
+}
+
